@@ -1,9 +1,54 @@
+use core::num;
+
+struct User {
+    first_name: String,
+    last_name: String,
+    age: i32
+}
+
+struct Rect {
+    width: i32,
+    height: i32
+}
+
+impl Rect {
+    fn area(&self) -> i32 {
+        self.width * self.height
+    }
+
+    fn perimeter(&self, num: i32) -> i32 {
+        2 * (self.width + self.height)
+    }
+
+    fn debug() -> i32 {
+        return 1;
+    }
+}
 
 fn main() {
-    let name = String::from("Sowdarjya");
-    println!("{}", is_even(-21));
-    println!("{}", fibo(4));
-    println!("{}", get_str_length(name));
+    // let name = String::from("Sowdarjya");
+    // println!("{}", is_even(-21));
+    // println!("{}", fibo(4));
+    // println!("{}", get_str_length(name));
+
+    let  user = User {
+        first_name: String::from("Sowdarjya"),
+        last_name: String::from("Kolay"),
+        age: 20
+    };
+
+    println!("{}", user.first_name);
+    println!("{}", user.last_name);
+    println!("{}", user.age);
+
+    let rect = Rect {
+        width: 10,
+        height: 20
+    };
+    
+    println!("{}", rect.area());
+    println!("{}", rect.perimeter(1));
+    println!("{}", Rect::debug());
 }
 
 fn is_even(num: i32) -> bool{
