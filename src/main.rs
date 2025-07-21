@@ -1,14 +1,16 @@
-use core::num;
-
 struct User {
     first_name: String,
     last_name: String,
     age: i32
 }
-
 struct Rect {
     width: i32,
     height: i32
+}
+
+enum Shape {
+    Circle(f64),
+    Rectangle(f64, f64)
 }
 
 impl Rect {
@@ -37,18 +39,30 @@ fn main() {
         age: 20
     };
 
-    println!("{}", user.first_name);
-    println!("{}", user.last_name);
-    println!("{}", user.age);
+    // println!("{}", user.first_name);
+    // println!("{}", user.last_name);
+    // println!("{}", user.age);
 
     let rect = Rect {
         width: 10,
         height: 20
     };
     
-    println!("{}", rect.area());
-    println!("{}", rect.perimeter(1));
-    println!("{}", Rect::debug());
+    // println!("{}", rect.area());
+    // println!("{}", rect.perimeter(1));
+    // println!("{}", Rect::debug());
+
+    let shape1 = Shape::Rectangle(4.0, 6.0);
+    println!("{}", print_area(shape1));
+    let shape2 = Shape::Circle(5.0);
+    println!("{}", print_area(shape2));
+}
+
+fn print_area(shape: Shape) -> f64{
+    match  shape {
+        Shape::Rectangle(a, b ) => a * b,
+        Shape::Circle(a) => 3.14 * a * a,
+    }
 }
 
 fn is_even(num: i32) -> bool{
