@@ -52,10 +52,28 @@ fn main() {
     // println!("{}", rect.perimeter(1));
     // println!("{}", Rect::debug());
 
-    let shape1 = Shape::Rectangle(4.0, 6.0);
-    println!("{}", print_area(shape1));
-    let shape2 = Shape::Circle(5.0);
-    println!("{}", print_area(shape2));
+    // let shape1 = Shape::Rectangle(4.0, 6.0);
+    // println!("{}", print_area(shape1));
+    // let shape2 = Shape::Circle(5.0);
+    // println!("{}", print_area(shape2));
+
+    // let  index = find_first_a(String::from("Sowdarjya"));
+    let  index = find_first_a(String::from("Preet"));
+
+    match index {
+        Some(value) => println!("Found 'a' at index: {}", value),
+        None => println!("No 'a' found in the string"),
+    }
+}
+
+fn find_first_a(a: String) -> Option<i32> {
+    for (index, char) in a.chars().enumerate() {
+        if char == 'a' {
+            return Some(index as i32);
+        }
+    }
+
+    return None;
 }
 
 fn print_area(shape: Shape) -> f64{
