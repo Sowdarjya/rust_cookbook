@@ -1,4 +1,5 @@
 use std::fs::read_to_string;
+use chrono::{Local, Utc};
 
 struct User {
     first_name: String,
@@ -67,16 +68,22 @@ fn main() {
     //     None => println!("No 'a' found in the string"),
     // }
 
-    let res = read_to_string("a.txt");
-    match res {
-        Ok(data) => println!("{}", data),
-        Err(err) => println!("Error reading file: {}", err),
-    }
-    let ans = read_from_file(String::from("a.txt"));
-    match ans {
-        Ok(data) => println!("{}", data),
-        Err(err) => println!("Error: {}", err),
-    }
+    // let res = read_to_string("a.txt");
+    // match res {
+    //     Ok(data) => println!("{}", data),
+    //     Err(err) => println!("Error reading file: {}", err),
+    // }
+    // let ans = read_from_file(String::from("a.txt"));
+    // match ans {
+    //     Ok(data) => println!("{}", data),
+    //     Err(err) => println!("Error: {}", err),
+    // }
+
+    let now = Local::now();
+    println!("current time is {}", now);
+
+    let utc_now = Utc::now();
+    println!("current UTC time is {}", utc_now);
 }
 
 fn find_first_a(a: String) -> Option<i32> {
