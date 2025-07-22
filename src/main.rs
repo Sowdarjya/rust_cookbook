@@ -1,3 +1,5 @@
+use std::fs::read_to_string;
+
 struct User {
     first_name: String,
     last_name: String,
@@ -58,11 +60,22 @@ fn main() {
     // println!("{}", print_area(shape2));
 
     // let  index = find_first_a(String::from("Sowdarjya"));
-    let  index = find_first_a(String::from("Preet"));
+    // let  index = find_first_a(String::from("Preet"));
 
-    match index {
-        Some(value) => println!("Found 'a' at index: {}", value),
-        None => println!("No 'a' found in the string"),
+    // match index {
+    //     Some(value) => println!("Found 'a' at index: {}", value),
+    //     None => println!("No 'a' found in the string"),
+    // }
+
+    let res = read_to_string("a.txt");
+    match res {
+        Ok(data) => println!("{}", data),
+        Err(err) => println!("Error reading file: {}", err),
+    }
+    let ans = read_from_file(String::from("a.txt"));
+    match ans {
+        Ok(data) => println!("{}", data),
+        Err(err) => println!("Error: {}", err),
     }
 }
 
@@ -74,6 +87,14 @@ fn find_first_a(a: String) -> Option<i32> {
     }
 
     return None;
+}
+
+fn read_from_file(file_path: String) -> Result<String, String>{
+    let result = read_to_string(file_path);
+    match result {
+        Ok(data) => Ok(data),
+        Err(err) => Err(String::from("File not read")),
+    }
 }
 
 fn print_area(shape: Shape) -> f64{
