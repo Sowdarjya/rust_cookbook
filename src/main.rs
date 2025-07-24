@@ -84,6 +84,10 @@ fn main() {
 
     let utc_now = Utc::now();
     println!("current UTC time is {}", utc_now);
+
+    let mut a = 69;
+    a = 70;
+    println!("a is {}", a);
 }
 
 fn find_first_a(a: String) -> Option<i32> {
