@@ -88,6 +88,16 @@ fn main() {
     let mut a = 69;
     a = 70;
     println!("a is {}", a);
+
+    let mut a1 = String::from("Sowdarjya");
+    a1 = do_something(a1);
+    println!("{}", a1);
+
+}
+
+fn do_something(s2: String) -> String {
+    println!("{}", s2);
+    return s2;
 }
 
 fn find_first_a(a: String) -> Option<i32> {
