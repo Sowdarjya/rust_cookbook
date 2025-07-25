@@ -1,4 +1,4 @@
-use std::fs::read_to_string;
+use std::{collections::HashMap, fs::read_to_string};
 use chrono::{Local, Utc};
 
 struct User {
@@ -112,6 +112,36 @@ fn main() {
     remove_odd(&mut vec);
     println!("After removing odd numbers: {:?}", vec);
 
+    let mut users = HashMap::new();
+
+    users.insert(String::from("Sowdarjya"), 20);
+    users.insert(String::from("Preet"), 21);
+
+    let first_user_age = users.get("Sowdarjya");
+
+    match first_user_age {
+        Some(age) => println!("Sowdarjya's age is {}", age),
+        None => println!("User not found"),   
+    }
+
+    let iinput_vec = vec![
+        (String::from("Sowdarjya"), 20),
+        (String::from("Preet"), 21),
+    ];
+
+    let user_map = group_values_by_keys(iinput_vec);
+
+    println!("User map: {:?}", user_map);
+
+}
+
+fn group_values_by_keys(vec: Vec<(String, i32)>) -> HashMap<String, i32> {
+    let mut map = HashMap::new();
+    for (key, value) in vec  {
+        map.insert(key, value );
+    }
+
+    return map;
 }
 
 fn remove_odd(vec: &mut Vec<i32>) {
