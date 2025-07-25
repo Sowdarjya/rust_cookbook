@@ -101,6 +101,39 @@ fn main() {
     let s3 = &s1; // Another immutable reference    
     println!("s2: {}, s3: {}", s2, s3);
 
+    let mut vec = Vec::new();
+    vec.push(1);
+    vec.push(2);
+    vec.push(3);
+    vec.push(4);
+
+    println!("{:?}", vec);
+    println!("Even numbers: {:?}", even_filter(&vec));
+    remove_odd(&mut vec);
+    println!("After removing odd numbers: {:?}", vec);
+
+}
+
+fn remove_odd(vec: &mut Vec<i32>) {
+    let mut i = 0;
+    while i < vec.len() {
+        if vec[i] % 2 != 0 {
+            vec.remove(i);
+        } else {
+            i += 1;
+        }
+    }
+}
+
+fn even_filter(vec: &Vec<i32>) -> Vec<i32> {
+    let mut new_vec = Vec::new();
+    for val in vec {
+        if val % 2 == 0 {
+            new_vec.push(*val);
+        }
+    }
+
+    return new_vec ;
 }
 
 fn do_something(s2: &mut String) {
