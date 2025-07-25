@@ -133,6 +133,30 @@ fn main() {
 
     println!("User map: {:?}", user_map);
 
+    let mut nums = vec![1,2,3,4,5];
+
+    // for value in &nums {
+    //     println!("Value: {}", value);
+    // }
+
+    let mut iter = nums.iter_mut();
+
+    // for value in iter {
+    //     println!("Iterated Value: {}", value);
+        
+    // }
+
+    // for value in iter {
+    //     *value += 1;
+    // }
+
+    // println!("Updated nums: {:?}", nums);
+
+    while let Some(value) = iter.next() {
+        println!("Next value: {}", value);
+    }
+
+
 }
 
 fn group_values_by_keys(vec: Vec<(String, i32)>) -> HashMap<String, i32> {
