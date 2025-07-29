@@ -184,6 +184,23 @@ fn main() {
 
     println!("{:?}", nums);
 
+    let mut word = String::from("Hello world");
+    let word2 = find_first_word(&word);
+
+    println!("Original word: {}", word);
+    println!("First word: {}", word2);
+}
+
+fn find_first_word(word: &String) -> &str {
+    let mut index = 0;
+    for (_,i) in word.chars().enumerate() {
+        if i == ' ' {
+            break;
+        }
+        index += 1;
+    }
+
+    return &word[0..index];
 }
 
 fn group_values_by_keys(vec: Vec<(String, i32)>) -> HashMap<String, i32> {
