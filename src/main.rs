@@ -139,7 +139,7 @@ fn main() {
     //     println!("Value: {}", value);
     // }
 
-    let mut iter = nums.iter_mut();
+    // let mut iter = nums.iter_mut();
 
     // for value in iter {
     //     println!("Iterated Value: {}", value);
@@ -152,10 +152,37 @@ fn main() {
 
     // println!("Updated nums: {:?}", nums);
 
-    while let Some(value) = iter.next() {
-        println!("Next value: {}", value);
+    // while let Some(value) = iter.next() {
+    //     println!("Next value: {}", value);
+    // }
+
+    let v1_iter = nums.iter() ;
+
+    // for val in v1_iter  {
+    //     println!("{}", val);
+    // }
+
+    // let sum: i32 = v1_iter.sum(); sum() is a consuming adapter
+
+    // println!("Sum of nums: {}", sum);
+
+    // for i in v1_iter {
+    //     println!("Value: {}", i);
+    // } v1_iter is consumed after sum() call
+
+    // let v2_iter = v1_iter.map(|x| x + 1);  This creates a new iterator that adds 1 to each element
+
+    let v3_iter = v1_iter.filter(|x| *x % 2 == 0);
+
+    // for i in v2_iter {
+    //     println!("Mapped Value: {}", i);
+    // }
+
+    for i in v3_iter  {
+        println!("{}", i);
     }
 
+    println!("{:?}", nums);
 
 }
 
