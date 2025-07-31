@@ -189,6 +189,19 @@ fn main() {
 
     println!("Original word: {}", word);
     println!("First word: {}", word2);
+
+    let bigger = largest(10, 20);
+    let bigger_char = largest("S", "M");
+    println!("{}", bigger);
+    println!("{}", bigger_char);
+}
+
+fn largest<T: std::cmp::PartialOrd>(a: T, b: T) -> T {
+    if a > b {
+        a
+    } else {
+        b
+    }
 }
 
 fn find_first_word(word: &String) -> &str {
