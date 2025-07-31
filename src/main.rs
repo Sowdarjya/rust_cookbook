@@ -6,6 +6,22 @@ struct User {
     last_name: String,
     age: i32
 }
+
+trait Summary {
+    fn summarise(&self) -> String {
+        return String::from("Default summary");
+    }
+}
+
+impl Summary for User {
+    fn summarise(&self) -> String {
+        return format!("{} {} is {} years old", self.first_name, self.last_name, self.age);
+    }
+}
+
+fn notify(u: impl Summary) {
+    println!("Notification: {}", u.summarise());
+}
 struct Rect {
     width: i32,
     height: i32
@@ -41,6 +57,9 @@ fn main() {
         last_name: String::from("Kolay"),
         age: 20
     };
+
+    println!("{}", user.summarise());
+    notify(user);
 
     // println!("{}", user.first_name);
     // println!("{}", user.last_name);
