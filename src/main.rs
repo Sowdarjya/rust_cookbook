@@ -1,4 +1,4 @@
-use std::{collections::HashMap, fs::read_to_string};
+use std::{collections::HashMap, fs::read_to_string, sync::mpsc, thread};
 use chrono::{Local, Utc};
 
 struct User {
@@ -242,6 +242,41 @@ fn main() {
 
     // println!("User name: {}", user.name); lifetime issue, name is dropped here
 
+    let handle = thread::spawn(|| {
+        for i in 0..5 {
+            println!("Hi from spawned thread: {}", i);
+        }
+    });
+
+    handle.join();
+
+    for i in 0..500 {
+        println!("Hi from main thread: {}", i);
+    }
+
+    let v = vec![1,2,3,4];
+ 
+    thread::spawn(move || {
+        println!("Vector in spawned thread: {:?}", v);
+    });
+    // move keyword transfers ownership of v to the thread
+
+    let (tx, rx) = mpsc::channel();
+    thread::spawn(move || {
+        tx.send(String::from("Hello from thread"));
+    });
+
+    let msg = rx.recv();
+
+    match msg {
+        Ok(message) => println!("Received message: {}", message),
+        Err(err) => println!("Error receiving message: {}", err),
+    }
+    // mpsc::channel() creates a channel for communication between threads
+    // tx.send() sends a message through the channel
+    // rx.recv() receives a message from the channel
+    // mpsc stands for multiple producer, single consumer
+    // This allows multiple threads to send messages to a single receiver thread
 
 }
 
