@@ -7,6 +7,10 @@ struct User {
     age: i32
 }
 
+struct Test<'a>{
+    name: &'a str
+}
+
 trait Summary {
     fn summarise(&self) -> String {
         return String::from("Default summary");
@@ -226,6 +230,18 @@ fn main() {
     }
 
     // println!("Longest string: {}", ans); lifetime issue, str2 is dropped here
+
+    let user;
+
+    {
+        let name = String::from("Sowdarjya");
+        user = Test { name: &name };
+
+        println!("User name: {}", user.name);
+    }
+
+    // println!("User name: {}", user.name); lifetime issue, name is dropped here
+
 
 }
 
