@@ -213,6 +213,28 @@ fn main() {
     let bigger_char = largest("S", "M");
     println!("{}", bigger);
     println!("{}", bigger_char);
+
+    let ans;
+
+    let str1 = String::from("Small");
+
+    {
+        let str2 = String::from("Longer");
+        ans = longest(&str1, &str2);
+
+        println!("Longest string: {}", ans);
+    }
+
+    // println!("Longest string: {}", ans); lifetime issue, str2 is dropped here
+
+}
+
+fn longest<'a>(str1: &'a str, str2: &'a str) -> &'a str {
+    if str1.len() > str2.len() {
+        str1
+    } else {
+        str2
+    }
 }
 
 fn largest<T: std::cmp::PartialOrd>(a: T, b: T) -> T {
